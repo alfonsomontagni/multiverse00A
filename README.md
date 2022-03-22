@@ -1,3 +1,28 @@
+# History
+
+# 22 MARZO 2022
+ng new multi --createApplication=false --directory=multiverse --interactive=false
+cd .\multiverse\
+ng g application bc-password --style=css --routing=true  --prefix=bcp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Multi
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.

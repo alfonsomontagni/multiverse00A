@@ -3,5 +3,104 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "bc-password": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/bc-password",
+      "sourceRoot": "projects/bc-password/src",
+      "prefix": "bcp",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/bc-password",
+            "index": "projects/bc-password/src/index.html",
+            "main": "projects/bc-password/src/main.ts",
+            "polyfills": "projects/bc-password/src/polyfills.ts",
+            "tsConfig": "projects/bc-password/tsconfig.app.json",
+            "assets": [
+              "projects/bc-password/src/favicon.ico",
+              "projects/bc-password/src/assets"
+            ],
+            "styles": [
+              "projects/bc-password/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/bc-password/src/environments/environment.ts",
+                  "with": "projects/bc-password/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "bc-password:build:production"
+            },
+            "development": {
+              "browserTarget": "bc-password:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "bc-password:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/bc-password/src/test.ts",
+            "polyfills": "projects/bc-password/src/polyfills.ts",
+            "tsConfig": "projects/bc-password/tsconfig.spec.json",
+            "karmaConfig": "projects/bc-password/karma.conf.js",
+            "assets": [
+              "projects/bc-password/src/favicon.ico",
+              "projects/bc-password/src/assets"
+            ],
+            "styles": [
+              "projects/bc-password/src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "bc-password"
 }
